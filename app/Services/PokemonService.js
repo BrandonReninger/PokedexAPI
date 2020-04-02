@@ -18,9 +18,14 @@ let _sandboxApi = axios.create({
 
 
 class PokemonService {
-    releaseMyPokemon() {
-        throw new Error("Method not implemented.");
+    releaseMyPokemon(pokemonId) {
+        _sandboxApi.delete(pokemonId)
+            .then(res => {
+                console.log("bye bye", res.data.data)
+                this.getMyPokemon()
+            }).catch(err => console.error(err))
     }
+
     catchActivePokemon() {
         _sandboxApi.post('', store.State.activePokemon)
             .then(res => {

@@ -43,8 +43,8 @@ export default class PokemonController {
     PokemonService.catchActivePokemon()
   }
 
-  releaseMyPokemon() {
-    PokemonService.releaseMyPokemon()
+  releaseMyPokemon(pokemonId) {
+    PokemonService.releaseMyPokemon(pokemonId)
   }
 
 }
