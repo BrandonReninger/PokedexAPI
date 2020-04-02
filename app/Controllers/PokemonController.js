@@ -1,5 +1,6 @@
 import PokemonService from "../Services/PokemonService.js";
 import store from "../store.js";
+import Pokemon from "../Models/Pokemon.js";
 
 //Private
 function _draw() {
@@ -42,6 +43,8 @@ export default class PokemonController {
     PokemonService.catchActivePokemon()
   }
 
-
+  releaseMyPokemon() {
+    PokemonService.releaseMyPokemon()
+  }
 
 }

@@ -1,5 +1,6 @@
 import store from "../store.js";
 import Pokemon from "../Models/Pokemon.js";
+import CaughtPokemon from "../Models/CaughtPokemon.js";
 
 
 
@@ -17,6 +18,9 @@ let _sandboxApi = axios.create({
 
 
 class PokemonService {
+    releaseMyPokemon() {
+        throw new Error("Method not implemented.");
+    }
     catchActivePokemon() {
         _sandboxApi.post('', store.State.activePokemon)
             .then(res => {
@@ -27,7 +31,9 @@ class PokemonService {
     getMyPokemon() {
         _sandboxApi.get()
             .then(res => {
-                console.log("caught pokemon!", res.data)
+                console.log("my pokemon!", res.data.data)
+                let myPokemon = res.data.data.map(rawPokeData => new CaughtPokemon(rawPokeData))
+                store.commit("myPokemon", myPokemon)
             })
     }
     getDetails(pokemonName) {
